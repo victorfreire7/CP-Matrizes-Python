@@ -7,30 +7,27 @@ temperaturas = [
 
 arraymedias = []
 arraycriticos = [0, 0, 0, 0]
+maiorrisco = 0
 
-for i in range(len(temperaturas)):
-    media = 0
+for i in range(len(temperaturas)): # acessando cada linha
+    media = 0 
 
-    for j in range(len(temperaturas)):
-        if temperaturas[i][j] >= 33:
-            arraycriticos[i] += 1
+    for j in range(len(temperaturas)): # acessando cada valor de cada linha
+        if temperaturas[i][j] >= 33: 
+            arraycriticos[i] += 1 # se a temperatura for maior ou igual a 33, eu vou adicionar 1 ponto no array
 
         media += temperaturas[i][j]
     
-    arraymedias.append(media / len(temperaturas))
+    arraymedias.append(media / len(temperaturas)) # fazendo a media aritmetica da temperatura...
 
-for i in range(len(temperaturas)):
+for i in range(len(arraycriticos)): # laço de verificação dos riscos 
+    if(arraycriticos[i] > maiorrisco):
+        maiorrisco = arraycriticos[i]
+
+for i in range(len(temperaturas)): # laço de prints
     print(f"Sala: {i + 1}")
     print(f"Media: {arraymedias[i]}")
     print(f"Criticos: {arraycriticos[i]}")
     print()
 
-maiorrisco = 1
-for i in range(len(arraycriticos)):
-    if(arraycriticos[i] > maiorrisco):
-        maiorrisco = arraycriticos[i];
-
 print(f"Sala com maior risco: {maiorrisco}")
-
-
-# print(temperaturas)
